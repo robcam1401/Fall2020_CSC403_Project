@@ -84,9 +84,13 @@ namespace Fall2020_CSC403_Project {
       player.AlterHealth(amount);
     }
 
-    private void tmrFinalBattle_Tick(object sender, EventArgs e) {
-      picBossBattle.Visible = false;
-      tmrFinalBattle.Enabled = false;
+        private void tmrFinalBattle_Tick(object sender, EventArgs e) {
+            picBossBattle.Visible = false;
+            tmrFinalBattle.Enabled = false;
+        }
+    private void btnRun_Click(object sender, EventArgs e) {
+                Close();
     }
-  }
-}
+    }
+ }
+
