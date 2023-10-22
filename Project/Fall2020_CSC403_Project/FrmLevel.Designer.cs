@@ -45,6 +45,8 @@
       this.picWall1 = new System.Windows.Forms.PictureBox();
       this.picWall2 = new System.Windows.Forms.PictureBox();
       this.picWall11 = new System.Windows.Forms.PictureBox();
+      this.trackBar1 = new System.Windows.Forms.TrackBar();
+
       ((System.ComponentModel.ISupportInitialize)(this.picEnemyCheeto)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.picEnemyPoisonPacket)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.picWall3)).BeginInit();
@@ -62,6 +64,7 @@
       ((System.ComponentModel.ISupportInitialize)(this.picWall1)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.picWall2)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.picWall11)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
       this.SuspendLayout();
       // 
       // lblInGameTime
@@ -274,6 +277,14 @@
       this.picWall11.Size = new System.Drawing.Size(164, 232);
       this.picWall11.TabIndex = 17;
       this.picWall11.TabStop = false;
+
+      //
+      //TrackBar1
+      //
+      this.trackBar1.Location = new System.Drawing.Point(12, 58);
+      this.trackBar1.Name = "trackBar1";
+      this.trackBar1.Size = new System.Drawing.Size(105, 69);
+      this.trackBar1.TabIndex = 18;
       // 
       // FrmLevel
       // 
@@ -351,6 +362,7 @@
     private System.Windows.Forms.PictureBox picWall1;
     private System.Windows.Forms.PictureBox picWall2;
     private System.Windows.Forms.PictureBox picWall11;
+    private System.Windows.Forms.TrackBar trackBar1;
   }
 }
 
