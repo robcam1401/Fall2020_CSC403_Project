@@ -4,19 +4,47 @@ using System;
 using System.Drawing;
 using System.Media;
 using System.Windows.Forms;
+using NAudio.Wave;
 
 namespace Fall2020_CSC403_Project {
   public partial class FrmBattle : Form {
     public static FrmBattle instance = null;
     private Enemy enemy;
     private Player player;
-        private SoundPlayer attackSound;
-    private FrmBattle() {
+    private WaveOutEvent waveOut;
+    private AudioFileReader audioFile;
+
+
+      private FrmBattle() {
       InitializeComponent();
       player = Game.player;
-      attackSound = new SoundPlayer(Resources.Kamehameha1);
+      PlayAudio("data/Bg.wav");
 
+     }
+        private void PlayAudio(string filePath)
+        {
+            waveOut = new WaveOutEvent();
+            audioFile = new AudioFileReader(filePath);
+            waveOut.Init(audioFile);
+            waveOut.Play();
         }
+
+        private void SetVolume(float volume)
+        {
+            if (waveOut != null)
+            {
+                waveOut.Volume = volume;
+            }
+        }
+
+        private void trackBarVolume_Scroll(object sender, EventArgs e)
+        {
+            TrackBar trackBar = (TrackBar)sender;
+            float volume = trackBar.Value / 100f; // Convert to a scale of 0 to 1
+            SetVolume(volume);
+        }
+
+
 
     public void Setup() {
       // update for this enemy
@@ -38,13 +66,36 @@ namespace Fall2020_CSC403_Project {
       picBossBattle.Size = ClientSize;
       picBossBattle.Visible = true;
 
-      SoundPlayer simpleSound = new SoundPlayer(Resources.final_battle);
-      simpleSound.Play();
+            //SoundPlayer simpleSound = new SoundPlayer(Resources.final_battle);
+            //simpleSound.Play();
 
-      tmrFinalBattle.Enabled = true;
-    }
+            //tmrFinalBattle.Enabled = true;
 
-    public static FrmBattle GetInstance(Enemy enemy) {
+            string audioFilePath = "data/Bg.wav";
+            waveOut = new WaveOutEvent();
+            audioFile = new AudioFileReader(audioFilePath); waveOut.Init(audioFile); waveOut.Play();
+            tmrFinalBattle.Enabled = true;
+
+            trackBarVolume.ValueChanged += VolumeTrackBar_ValueChanged;
+        }
+
+        private void VolumeTrackBar_ValueChanged(object sender, EventArgs e)
+        {
+            if (audioFile != null)
+            {
+                float volume = trackBarVolume.Value / 100.0f;
+                audioFile.Volume = volume;
+            }
+        }
+
+        private void FrmBattle_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            waveOut?.Dispose();
+            audioFile?.Dispose();
+
+        }
+
+     public static FrmBattle GetInstance(Enemy enemy) {
       if (instance == null) {
         instance = new FrmBattle();
         instance.enemy = enemy;
@@ -70,9 +121,8 @@ namespace Fall2020_CSC403_Project {
       if (enemy.Health > 0) {
         enemy.OnAttack(-2);
       }
-            attackSound.Play();
 
-            UpdateHealthBars();
+      UpdateHealthBars();
       if (player.Health <= 0 || enemy.Health <= 0) {
         instance = null;
         Close();
@@ -87,9 +137,18 @@ namespace Fall2020_CSC403_Project {
       player.AlterHealth(amount);
     }
 
-    private void tmrFinalBattle_Tick(object sender, EventArgs e) {
-      picBossBattle.Visible = false;
-      tmrFinalBattle.Enabled = false;
+        private void tmrFinalBattle_Tick(object sender, EventArgs e) {
+            picBossBattle.Visible = false;
+            tmrFinalBattle.Enabled = false;
+        }
+    private void btnRun_Click(object sender, EventArgs e) {
+                Close();
     }
-  }
-}
+
+        private void FrmBattle_Load(object sender, EventArgs e)
+        {
+
+        }
+    }
+ }
+
