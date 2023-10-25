@@ -84,7 +84,9 @@ namespace Fall2020_CSC403_Project {
 
       // check collision with enemies
       if (HitAChar(player, enemyPoisonPacket)) {
+                if (picEnemyPoisonPacket != null) { 
         Fight(enemyPoisonPacket);
+                    }
       }
       else if (HitAChar(player, enemyCheeto)) {
         Fight(enemyCheeto);
@@ -113,9 +115,14 @@ namespace Fall2020_CSC403_Project {
     }
 
     private void Fight(Enemy enemy) {
+            
       player.ResetMoveSpeed();
       player.MoveBack();
       frmBattle = FrmBattle.GetInstance(enemy);
+            if (enemyPoisonPacket.Health < 0) {
+                Controls.Remove(picEnemyPoisonPacket);
+                picEnemyPoisonPacket  = null;
+            } 
       frmBattle.Show();
 
       if (enemy == bossKoolaid) {
