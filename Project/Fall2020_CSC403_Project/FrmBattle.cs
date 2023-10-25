@@ -13,14 +13,16 @@ namespace Fall2020_CSC403_Project {
     private Player player;
     private WaveOutEvent waveOut;
     private AudioFileReader audioFile;
+   private SoundPlayer attackSound;
 
 
-      private FrmBattle() {
+        private FrmBattle() {
       InitializeComponent();
       player = Game.player;
       PlayAudio("data/Bg.wav");
+      attackSound = new SoundPlayer(Resources.Kamehameha); // Load the attack sound from resources
 
-     }
+        }
         private void PlayAudio(string filePath)
         {
             waveOut = new WaveOutEvent();
@@ -121,8 +123,9 @@ namespace Fall2020_CSC403_Project {
       if (enemy.Health > 0) {
         enemy.OnAttack(-2);
       }
+            attackSound.Play();
 
-      UpdateHealthBars();
+       UpdateHealthBars();
       if (player.Health <= 0 || enemy.Health <= 0) {
         instance = null;
         Close();
