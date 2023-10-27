@@ -73,9 +73,9 @@ namespace Fall2020_CSC403_Project {
       lblInGameTime.Text = "Time: " + time.ToString();
     }
 
-    private void tmrPlayerMove_Tick(object sender, EventArgs e) {
-      // move player
-      player.Move();
+        private void tmrPlayerMove_Tick(object sender, EventArgs e) {
+            // move player
+            player.Move();
             if (enemyPoisonPacket.Health < 0)
             {
                 Controls.Remove(picEnemyPoisonPacket);
@@ -91,34 +91,63 @@ namespace Fall2020_CSC403_Project {
                 Controls.Remove(picBossKoolAid);
                 picBossKoolAid = null;
             }
+            if (player.Health <= 0 || enemyPoisonPacket.Health <= 0 && enemyCheeto.Health <= 0 && bossKoolaid.Health <= 0) 
+            {
+                showGameOverScreen();
+                return;
+            }
+
 
             // check collision with walls
             if (HitAWall(player)) {
-        player.MoveBack();
-      }
-
-      // check collision with enemies
-      if (HitAChar(player, enemyPoisonPacket)) {
-        if(picEnemyPoisonPacket != null) { 
-            Fight(enemyPoisonPacket);
-        }
-      }
-      else if (HitAChar(player, enemyCheeto)) {
-                if(picEnemyCheeto != null) { 
-        Fight(enemyCheeto);
+                player.MoveBack();
             }
-      }
-      if (HitAChar(player, bossKoolaid)) {
-                if(picBossKoolAid != null) {
-        Fight(bossKoolaid);
-                    }
-      }
+
+            // check collision with enemies
+            if (HitAChar(player, enemyPoisonPacket)) {
+                if (picEnemyPoisonPacket != null) {
+                    Fight(enemyPoisonPacket);
+                }
+            }
+            else if (HitAChar(player, enemyCheeto)) {
+                if (picEnemyCheeto != null) {
+                    Fight(enemyCheeto);
+                }
+            }
+            if (HitAChar(player, bossKoolaid)) {
+                if (picBossKoolAid != null) {
+                    Fight(bossKoolaid);
+                }
+            }
 
       // update player's picture box
       picPlayer.Location = new Point((int)player.Position.x, (int)player.Position.y);
     }
+        private void ShowGameOverScreen()
+        {
+            // Stop the game-related timers and input handling
+            tmrPlayerMove.Stop();
+            tmrUpdateInGameTime.Stop();
+            this.KeyUp -= FrmLevel_KeyUp;
+            this.KeyDown -= FrmLevel_KeyDown;
 
-    private bool HitAWall(Character c) {
+            // Create and display the game over form
+            GameOverForm gameOverForm = new GameOverForm();
+            gameOverForm.ShowDialog(); // Show the game over screen as a modal dialog
+
+            // Handle user input on the game over screen (e.g., restart or exit)
+            if (gameOverForm.ShouldRestartGame)
+            {
+                // Restart the game
+                RestartGame();
+            }
+            else
+            {
+                // Exit the application or return to the main menu
+                Application.Exit();
+            }
+        }
+        private bool HitAWall(Character c) {
       bool hitAWall = false;
       for (int w = 0; w < walls.Length; w++) {
         if (c.Collider.Intersects(walls[w].Collider)) {
@@ -178,5 +207,6 @@ namespace Fall2020_CSC403_Project {
         {
 
         }
+
     }
 }
