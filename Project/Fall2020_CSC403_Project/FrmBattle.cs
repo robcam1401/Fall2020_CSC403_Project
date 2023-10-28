@@ -148,6 +148,11 @@ namespace Fall2020_CSC403_Project {
                 instance = null;
                 Close();
     }
+        private void btnShield_Click(object sender, EventArgs e)
+        {
+            btnShield.Enabled = false;
+        }
+    
 
         private void FrmBattle_Load(object sender, EventArgs e)
         {

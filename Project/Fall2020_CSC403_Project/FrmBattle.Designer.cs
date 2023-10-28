@@ -25,6 +25,7 @@
     private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
             this.btnAttack = new System.Windows.Forms.Button();
+            this.btnShield = new System.Windows.Forms.Button();
             this.lblPlayerHealthFull = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -150,6 +151,18 @@
             this.btnRun.UseVisualStyleBackColor = true;
             this.btnRun.Click += new System.EventHandler(this.btnRun_Click);
             // 
+            // btnShield
+            // 
+            this.btnShield.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnShield.Location = new System.Drawing.Point(191, 801);
+            this.btnShield.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnShield.Name = "btnShield";
+            this.btnShield.Size = new System.Drawing.Size(192, 66);
+            this.btnShield.TabIndex = 15;
+            this.btnShield.Text = "🛡️Shield";
+            this.btnShield.UseVisualStyleBackColor = true;
+            this.btnShield.Click += new System.EventHandler(this.btnShield_Click);
+            // 
             // trackBarVolume
             // 
             this.trackBarVolume.Location = new System.Drawing.Point(912, 646);
@@ -168,6 +181,7 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1233, 928);
             this.Controls.Add(this.btnRun);
+            this.Controls.Add(this.btnShield);
             this.Controls.Add(this.picBossBattle);
             this.Controls.Add(this.lblEnemyHealthFull);
             this.Controls.Add(this.label2);
@@ -202,6 +216,7 @@
     private System.Windows.Forms.PictureBox picBossBattle;
     private System.Windows.Forms.Timer tmrFinalBattle;
     private System.Windows.Forms.Button btnRun;
+    private System.Windows.Forms.Button btnShield;
     private System.Windows.Forms.TrackBar trackBarVolume;
     }
 }
