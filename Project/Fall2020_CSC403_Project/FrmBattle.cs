@@ -14,6 +14,7 @@ namespace Fall2020_CSC403_Project {
     private WaveOutEvent waveOut;
     private AudioFileReader audioFile;
    private SoundPlayer attackSound;
+   private bool shieldActivated = false;
 
 
         private FrmBattle() {
@@ -119,17 +120,35 @@ namespace Fall2020_CSC403_Project {
     }
 
     private void btnAttack_Click(object sender, EventArgs e) {
-      player.OnAttack(-4);
-      if (enemy.Health > 0) {
-        enemy.OnAttack(-2);
-      }
-            attackSound.Play();
 
+            //player.OnAttack(-4);
+            if (shieldActivated)
+            {
+                if (enemy.Health > 0)
+                {
+                    enemy.OnAttack(-2);
+                }
+            }
+            else
+            {
+                if(player.Health > 0)
+                {
+                    player.OnAttack(-2);
+                }
+                if(player.Health > 0)
+                {
+                    player.OnAttack(-4);
+                }
+            }
+      
+            attackSound.Play();
+            shieldActivated = false;
        UpdateHealthBars();
       if (player.Health <= 0 || enemy.Health <= 0) {
         instance = null;
         Close();
       }
+            //shieldActivated = false;
     }
 
     private void EnemyDamage(int amount) {
@@ -148,9 +167,11 @@ namespace Fall2020_CSC403_Project {
                 instance = null;
                 Close();
     }
+       // private bool sheildActivated = false;
         private void btnShield_Click(object sender, EventArgs e)
         {
             btnShield.Enabled = false;
+            shieldActivated = true; 
         }
     
 
