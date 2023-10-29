@@ -72,7 +72,9 @@ namespace Fall2020_CSC403_Project {
       string time = span.ToString(@"hh\:mm\:ss");
       lblInGameTime.Text = "Time: " + time.ToString();
     }
-
+    //code review: Co'Niya
+    // code works, it checks if enemy's health is 0 and if so it makes their existence null meaning they disappear from the screen.
+    //I think there was a bug where if the player died and you click on the enemy again and attacked it still disappeared.
     private void tmrPlayerMove_Tick(object sender, EventArgs e) {
       // move player
       player.Move();
