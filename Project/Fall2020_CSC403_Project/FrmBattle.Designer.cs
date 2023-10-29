@@ -36,10 +36,12 @@
             this.tmrFinalBattle = new System.Windows.Forms.Timer(this.components);
             this.btnRun = new System.Windows.Forms.Button();
             this.trackBarVolume = new System.Windows.Forms.TrackBar();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
             ((System.ComponentModel.ISupportInitialize)(this.picBossBattle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picEnemy)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPlayer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarVolume)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnAttack
@@ -53,6 +55,18 @@
             this.btnAttack.Text = "Attack";
             this.btnAttack.UseVisualStyleBackColor = true;
             this.btnAttack.Click += new System.EventHandler(this.btnAttack_Click);
+            // 
+            // btnShield
+            // 
+            this.btnShield.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnShield.Location = new System.Drawing.Point(191, 801);
+            this.btnShield.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnShield.Name = "btnShield";
+            this.btnShield.Size = new System.Drawing.Size(192, 66);
+            this.btnShield.TabIndex = 15;
+            this.btnShield.Text = "🛡️Shield";
+            this.btnShield.UseVisualStyleBackColor = true;
+            this.btnShield.Click += new System.EventHandler(this.btnShield_Click);
             // 
             // lblPlayerHealthFull
             // 
@@ -151,18 +165,6 @@
             this.btnRun.UseVisualStyleBackColor = true;
             this.btnRun.Click += new System.EventHandler(this.btnRun_Click);
             // 
-            // btnShield
-            // 
-            this.btnShield.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnShield.Location = new System.Drawing.Point(191, 801);
-            this.btnShield.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnShield.Name = "btnShield";
-            this.btnShield.Size = new System.Drawing.Size(192, 66);
-            this.btnShield.TabIndex = 15;
-            this.btnShield.Text = "🛡️Shield";
-            this.btnShield.UseVisualStyleBackColor = true;
-            this.btnShield.Click += new System.EventHandler(this.btnShield_Click);
-            // 
             // trackBarVolume
             // 
             this.trackBarVolume.Location = new System.Drawing.Point(912, 646);
@@ -173,6 +175,14 @@
             this.trackBarVolume.TabIndex = 9;
             this.trackBarVolume.Scroll += new System.EventHandler(this.trackBarVolume_Scroll);
             // 
+            // trackBar1
+            // 
+            this.trackBar1.Location = new System.Drawing.Point(800, 668);
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Size = new System.Drawing.Size(302, 69);
+            this.trackBar1.TabIndex = 16;
+            this.trackBar1.Scroll += new System.EventHandler(this.trackBarVolume_Scroll);
+            // 
             // FrmBattle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -180,6 +190,7 @@
             this.BackColor = System.Drawing.Color.Green;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1233, 928);
+            this.Controls.Add(this.trackBar1);
             this.Controls.Add(this.btnRun);
             this.Controls.Add(this.btnShield);
             this.Controls.Add(this.picBossBattle);
@@ -200,7 +211,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.picEnemy)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPlayer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarVolume)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
     }
 
@@ -218,5 +231,6 @@
     private System.Windows.Forms.Button btnRun;
     private System.Windows.Forms.Button btnShield;
     private System.Windows.Forms.TrackBar trackBarVolume;
+        private System.Windows.Forms.TrackBar trackBar1;
     }
 }
