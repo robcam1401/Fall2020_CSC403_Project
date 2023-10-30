@@ -78,6 +78,9 @@ namespace Fall2020_CSC403_Project {
     private void tmrPlayerMove_Tick(object sender, EventArgs e) {
       // move player
       player.Move();
+            //checks for a specific enemy's health and if that health is zero 
+            //the player image will be removed from the level window and
+            //the picture for the enemy will be set to null
             if (enemyPoisonPacket.Health < 0)
             {
                 Controls.Remove(picEnemyPoisonPacket);
@@ -100,6 +103,8 @@ namespace Fall2020_CSC403_Project {
       }
 
       // check collision with enemies
+      //checks for a null case for the enemys
+      //if null case is found the battle screen will not commence
       if (HitAChar(player, enemyPoisonPacket)) {
         if(picEnemyPoisonPacket != null) { 
             Fight(enemyPoisonPacket);
