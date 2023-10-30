@@ -163,6 +163,8 @@ namespace Fall2020_CSC403_Project {
             picBossBattle.Visible = false;
             tmrFinalBattle.Enabled = false;
         }
+    //introduces an run button the closes the battle when pressed
+    //keeping the player and enemy health the same
     private void btnRun_Click(object sender, EventArgs e) {
                 instance = null;
                 Close();
