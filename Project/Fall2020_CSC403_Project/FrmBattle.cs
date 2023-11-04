@@ -17,7 +17,7 @@ namespace Fall2020_CSC403_Project {
    private bool shieldActivated = false;
 
 
-        private FrmBattle() {
+        public FrmBattle() {
       InitializeComponent();
       player = Game.player;
       PlayAudio("data/Bg.wav");
@@ -107,7 +107,7 @@ namespace Fall2020_CSC403_Project {
       return instance;
     }
 
-    private void UpdateHealthBars() {
+      public void UpdateHealthBars() {
       float playerHealthPer = player.Health / (float)player.MaxHealth;
       float enemyHealthPer = enemy.Health / (float)enemy.MaxHealth;
 
@@ -122,15 +122,7 @@ namespace Fall2020_CSC403_Project {
     private void btnAttack_Click(object sender, EventArgs e) {
 
             //player.OnAttack(-4);
-            if (shieldActivated)
-            {
-                if (player.Health > 0)
-                {
-                    player.OnAttack(-2);
-                }
-            }
-            else
-            {
+
                 if(enemy.Health > 0)
                 {
                     enemy.OnAttack(-2);
@@ -139,8 +131,15 @@ namespace Fall2020_CSC403_Project {
                 {
                     player.OnAttack(-4);
                 }
+            
+            if (enemy.Health < 0)
+            {
+                enemy.Img = null;
             }
-      
+         
+
+
+
             attackSound.Play();
             shieldActivated = false;
        UpdateHealthBars();
@@ -163,8 +162,6 @@ namespace Fall2020_CSC403_Project {
             picBossBattle.Visible = false;
             tmrFinalBattle.Enabled = false;
         }
-    //introduces an run button the closes the battle when pressed
-    //keeping the player and enemy health the same
     private void btnRun_Click(object sender, EventArgs e) {
                 instance = null;
                 Close();
@@ -172,10 +169,38 @@ namespace Fall2020_CSC403_Project {
        // private bool sheildActivated = false;
         private void btnShield_Click(object sender, EventArgs e)
         {
+            
             btnShield.Enabled = false;
-            shieldActivated = true; 
+            shieldActivated = true;
+            //player.OnAttack(-4);
+            if (shieldActivated)
+            {
+                if (player.Health > 0)
+                {
+                    player.OnAttack(-2);
+                }
+            }
+          
+            if (enemy.Health < 0)
+            {
+                enemy.Img = null;
+            }
+
+
+
+
+            attackSound.Play();
+            shieldActivated = false;
+            UpdateHealthBars();
+            if (player.Health <= 0 || enemy.Health <= 0)
+            {
+                instance = null;
+                Close();
+            }
+
+
         }
-    
+
 
         private void FrmBattle_Load(object sender, EventArgs e)
         {
