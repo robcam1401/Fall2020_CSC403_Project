@@ -92,17 +92,17 @@ namespace Fall2020_CSC403_Project {
             //checks for a specific enemy's health and if that health is zero 
             //the player image will be removed from the level window and
             //the picture for the enemy will be set to null
-            if (enemyPoisonPacket.Health < 0)
+            if (enemyPoisonPacket.Health <= 0)
             {
                 Controls.Remove(picEnemyPoisonPacket);
                 picEnemyPoisonPacket = null;
             }
-            if (enemyCheeto.Health < 0)
+            if (enemyCheeto.Health <= 0)
             {
                 Controls.Remove(picEnemyCheeto);
                 picEnemyCheeto = null;
             }
-            if (bossKoolaid.Health < 0)
+            if (bossKoolaid.Health <= 0)
             {
                 Controls.Remove(picBossKoolAid);
                 picBossKoolAid = null;
