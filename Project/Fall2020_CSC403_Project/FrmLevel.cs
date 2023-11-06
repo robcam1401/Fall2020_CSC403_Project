@@ -71,7 +71,18 @@ namespace Fall2020_CSC403_Project {
       TimeSpan span = DateTime.Now - timeBegin;
       string time = span.ToString(@"hh\:mm\:ss");
       lblInGameTime.Text = "Time: " + time.ToString();
+            UpdateHealthBars();
     }
+        //updates the player healh bar in the level screen
+        private void UpdateHealthBars() {
+            float playerHealthPer = player.Health / (float)player.MaxHealth;
+
+            const int MAX_HEALTHBAR_LEVEL_WIDTH = 226;
+
+            lblPlayerHealthFullLevel.Width = (int)(MAX_HEALTHBAR_LEVEL_WIDTH * playerHealthPer);
+
+            lblPlayerHealthFullLevel.Text = player.Health.ToString();
+        }
     //code review: Co'Niya
     // code works, it checks if enemy's health is 0 and if so it makes their existence null meaning they disappear from the screen.
     //I think there was a bug where if the player died and you click on the enemy again and attacked it still disappeared.

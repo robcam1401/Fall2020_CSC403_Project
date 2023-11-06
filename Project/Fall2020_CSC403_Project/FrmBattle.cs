@@ -112,7 +112,9 @@ namespace Fall2020_CSC403_Project {
       float enemyHealthPer = enemy.Health / (float)enemy.MaxHealth;
 
       const int MAX_HEALTHBAR_WIDTH = 226;
+
       lblPlayerHealthFull.Width = (int)(MAX_HEALTHBAR_WIDTH * playerHealthPer);
+
       lblEnemyHealthFull.Width = (int)(MAX_HEALTHBAR_WIDTH * enemyHealthPer);
 
       lblPlayerHealthFull.Text = player.Health.ToString();
