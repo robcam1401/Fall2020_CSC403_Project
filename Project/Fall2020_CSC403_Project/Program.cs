@@ -10,10 +10,13 @@ namespace Fall2020_CSC403_Project {
     /// The main entry point for the application.
     /// </summary>
     [STAThread]
-    static void Main() {
-      Application.EnableVisualStyles();
-      Application.SetCompatibleTextRenderingDefault(false);
-      Application.Run(new FrmLevel());
+    static void Main()
+        {
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            // show the instructions form
+            Application.Run(new frmInstructions());
+            Application.Run(new FrmLevel());
+        }
     }
-  }
 }
