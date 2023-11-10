@@ -62,13 +62,7 @@ namespace Fall2020_CSC403_Project {
 
       // show health
       UpdateHealthBars();
-            if (player.Health <= 0)
-            {
-                gameOverScreen gameOverForm = new gameOverScreen();
-                gameOverForm.ShowDialog();
-                Application.Exit();
-            }
-
+        
         }
 
     public void SetupForBossBattle() {
