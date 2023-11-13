@@ -19,6 +19,8 @@ namespace Fall2020_CSC403_Project {
 
         private FrmBattle() {
       InitializeComponent();
+    //setting the trackbar's value to its maximum when the form is loaded
+      trackBarVolume.Value = trackBarVolume.Maximum;
       player = Game.player;
       PlayAudio("data/Bg.wav");
       attackSound = new SoundPlayer(Resources.Kamehameha); // Load the attack sound from resources
@@ -182,7 +184,7 @@ namespace Fall2020_CSC403_Project {
 
         private void FrmBattle_Load(object sender, EventArgs e)
         {
-
+            
         }
     }
  }
