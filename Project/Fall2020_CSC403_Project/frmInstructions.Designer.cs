@@ -41,7 +41,7 @@ namespace Fall2020_CSC403_Project
             // closeTimer
             // 
             this.closeTimer.Enabled = true;
-            this.closeTimer.Interval = 9000;
+            this.closeTimer.Interval = 15000;
             this.closeTimer.Tick += new System.EventHandler(this.CloseTimer_Tick);
             // 
             // label1
@@ -55,7 +55,7 @@ namespace Fall2020_CSC403_Project
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(900, 600);
             this.label1.TabIndex = 0;
-            this.label1.Text = "\r\nWelcome to the Battle game !!! Here you will be ...........................\r\n\r\n" +
+            this.label1.Text = "\r\nWelcome to the Battle game !!! Use the arrow key to move within the game.\n You'll see a attack, run and sheild button\n along with a volume slider to adjust the volume to your liking.\n Use spacebar to pickup health potion.  ...........................\r\n\r\n" +
     "\r\n";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.label1.Click += new System.EventHandler(this.label1_Click);
