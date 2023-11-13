@@ -181,6 +181,8 @@
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Size = new System.Drawing.Size(302, 69);
             this.trackBar1.TabIndex = 16;
+            this.trackBar1.Maximum = 10;
+            this.trackBar1.Value = this.trackBar1.Maximum;
             this.trackBar1.Scroll += new System.EventHandler(this.trackBarVolume_Scroll);
             // 
             // FrmBattle
