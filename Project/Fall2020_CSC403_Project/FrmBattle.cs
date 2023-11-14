@@ -132,6 +132,8 @@ namespace Fall2020_CSC403_Project {
                 if (player.Health > 0)
                 {
                     player.OnAttack(-2);
+                    richTextBox1.Text += "Enemy: Not so tough are you? You gotta use a shield Hahahahah.";
+                    richTextBox1.Text += "\n";
                 }
             }
             else
@@ -139,10 +141,14 @@ namespace Fall2020_CSC403_Project {
                 if(enemy.Health > 0)
                 {
                     enemy.OnAttack(-2);
+                    richTextBox1.Text += "Player: You thought I was gonna take it easy on you? Not today..";
+                    richTextBox1.Text += "\n";
                 }
                 if(player.Health > 0)
                 {
                     player.OnAttack(-4);
+                    richTextBox1.Text += "Enemy: Not so tough are you? Hahahahah.";
+                    richTextBox1.Text += "\n";
                 }
             }
       
