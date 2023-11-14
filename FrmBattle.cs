@@ -19,6 +19,8 @@ namespace Fall2020_CSC403_Project {
 
         private FrmBattle() {
       InitializeComponent();
+    //setting the trackbar's value to its maximum when the form is loaded
+      trackBarVolume.Value = trackBarVolume.Maximum;
       player = Game.player;
       PlayAudio("data/Bg.wav");
       attackSound = new SoundPlayer(Resources.Kamehameha); // Load the attack sound from resources
@@ -62,7 +64,8 @@ namespace Fall2020_CSC403_Project {
 
       // show health
       UpdateHealthBars();
-    }
+        
+        }
 
     public void SetupForBossBattle() {
       picBossBattle.Location = Point.Empty;
@@ -112,7 +115,9 @@ namespace Fall2020_CSC403_Project {
       float enemyHealthPer = enemy.Health / (float)enemy.MaxHealth;
 
       const int MAX_HEALTHBAR_WIDTH = 226;
+
       lblPlayerHealthFull.Width = (int)(MAX_HEALTHBAR_WIDTH * playerHealthPer);
+
       lblEnemyHealthFull.Width = (int)(MAX_HEALTHBAR_WIDTH * enemyHealthPer);
 
       lblPlayerHealthFull.Text = player.Health.ToString();
@@ -127,6 +132,8 @@ namespace Fall2020_CSC403_Project {
                 if (player.Health > 0)
                 {
                     player.OnAttack(-2);
+                    richTextBox1.Text += "Enemy: Not so tough are you? Hahahahah.";
+                    richTextBox1.Text += "\n";
                 }
             }
             else
@@ -134,10 +141,14 @@ namespace Fall2020_CSC403_Project {
                 if(enemy.Health > 0)
                 {
                     enemy.OnAttack(-2);
+                    richTextBox1.Text += "Player: You thought I was gonna take it easy on you? Not today..";
+                    richTextBox1.Text += "\n";
                 }
                 if(player.Health > 0)
                 {
                     player.OnAttack(-4);
+                    richTextBox1.Text += "Enemy: Not so tough are you? Hahahahah.";
+                    richTextBox1.Text += "\n";
                 }
             }
       
@@ -163,6 +174,8 @@ namespace Fall2020_CSC403_Project {
             picBossBattle.Visible = false;
             tmrFinalBattle.Enabled = false;
         }
+    //introduces an run button the closes the battle when pressed
+    //keeping the player and enemy health the same
     private void btnRun_Click(object sender, EventArgs e) {
                 instance = null;
                 Close();
@@ -177,7 +190,7 @@ namespace Fall2020_CSC403_Project {
 
         private void FrmBattle_Load(object sender, EventArgs e)
         {
-
+            
         }
     }
  }
