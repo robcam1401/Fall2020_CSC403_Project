@@ -7,8 +7,10 @@ using System.Windows.Forms;
 namespace Fall2020_CSC403_Project {
   public partial class FrmLevel : Form {
     private Player player;
+        private HealthPotion healthPotion;
+        private Weapon weapon;
 
-    private Enemy enemyPoisonPacket;
+        private Enemy enemyPoisonPacket;
     private Enemy bossKoolaid;
     private Enemy enemyCheeto;
     private Character[] walls;
@@ -25,8 +27,14 @@ namespace Fall2020_CSC403_Project {
     private void FrmLevel_Load(object sender, EventArgs e) {
       const int PADDING = 7;
       const int NUM_WALLS = 13;
+            // Instantiate the HealthPotion
 
-      player = new Player(CreatePosition(picPlayer), CreateCollider(picPlayer, PADDING));
+
+            healthPotion = new HealthPotion(CreatePosition(pictureBox1), CreateCollider(pictureBox1, PADDING), 10);
+            pictureBox1.BackgroundImage = Properties.Resources.junglejuice; // Set the image for the health potion
+            weapon = new Weapon(CreatePosition(pictureBox2), CreateCollider(pictureBox2, PADDING));
+
+            player = new Player(CreatePosition(picPlayer), CreateCollider(picPlayer, PADDING));
       bossKoolaid = new Enemy(CreatePosition(picBossKoolAid), CreateCollider(picBossKoolAid, PADDING));
       enemyPoisonPacket = new Enemy(CreatePosition(picEnemyPoisonPacket), CreateCollider(picEnemyPoisonPacket, PADDING));
       enemyCheeto = new Enemy(CreatePosition(picEnemyCheeto), CreateCollider(picEnemyCheeto, PADDING));
@@ -89,6 +97,24 @@ namespace Fall2020_CSC403_Project {
     private void tmrPlayerMove_Tick(object sender, EventArgs e) {
       // move player
       player.Move();
+
+            if (HitAChar(player, healthPotion) & player.Health != player.MaxHealth)
+            {
+                player.Health += 10;
+                pictureBox1.Location = new Point(1000, 1000);
+                player.MaxHealth = player.Health;
+                System.Console.WriteLine("Hit heart!!!");
+            }
+            //Picks up weapon if collided with!
+            if (HitAChar(player, weapon))
+            {
+                pictureBox2.Visible = false;
+                //this.picGun.BackgroundImage = global::Fall2020_CSC403_Project.Properties.Resources.null;
+                this.pictureBox2.Location = new System.Drawing.Point(2000, 2000);
+
+                this.picPlayer.BackgroundImage = global::Fall2020_CSC403_Project.Properties.Resources.player_ak47;
+            }
+
             //checks for a specific enemy's health and if that health is zero 
             //the player image will be removed from the level window and
             //the picture for the enemy will be set to null
@@ -193,6 +219,11 @@ namespace Fall2020_CSC403_Project {
 
     }
         private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
         {
 
         }

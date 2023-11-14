@@ -139,4 +139,16 @@
   <data name="final_battle" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\data\final_battle.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="ak47" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\data\ak47.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="junglejuice" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\data\junglejuice.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Kamehameha" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\data\Kamehameha.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="player_ak47" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\data\player_ak47.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

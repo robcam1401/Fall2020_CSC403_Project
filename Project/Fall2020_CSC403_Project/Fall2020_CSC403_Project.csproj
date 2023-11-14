@@ -94,8 +94,10 @@
     <Compile Include="FrmLevel.Designer.cs">
       <DependentUpon>FrmLevel.cs</DependentUpon>
     </Compile>
+    <Compile Include="HelalthPotion.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Weapon.cs" />
     <EmbeddedResource Include="FrmBattle.resx">
       <DependentUpon>FrmBattle.cs</DependentUpon>
     </EmbeddedResource>
@@ -162,9 +164,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="data\ak47.png" />
     <Content Include="data\Bg.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="data\junglejuice.jpg" />
+    <Content Include="data\Kamehameha.wav" />
+    <Content Include="data\player_ak47.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
