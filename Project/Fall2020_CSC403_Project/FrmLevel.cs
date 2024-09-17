@@ -81,7 +81,7 @@ namespace Fall2020_CSC403_Project {
       lblInGameTime.Text = "Time: " + time.ToString();
             UpdateHealthBars();
     }
-        //updates the player healh bar in the level screen
+        //updates the player healh bar in the level screen.
         private void UpdateHealthBars() {
             float playerHealthPer = player.Health / (float)player.MaxHealth;
 
